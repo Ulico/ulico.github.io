@@ -31,7 +31,7 @@ function App() {
         {tab === 'home' && (
           <section>
             <h2>Welcome!</h2>
-            <p>Hi, I'm Adrian Russo. Welcome to my personal website.</p>
+            <p>Hi, I'm Adrian Russo, musician and software engineer. Welcome to my personal website.</p>
             <p>Explore my music and projects using the tabs above.</p>
           </section>
         )}
