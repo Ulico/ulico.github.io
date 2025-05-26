@@ -1,0 +1,60 @@
+/* Modern styles for Adrian Russo's personal website in React */
+body {
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #f7f9fb;
+  color: #222;
+}
+.header {
+  background: #222;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+.header nav {
+  margin-top: 1rem;
+}
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid transparent;
+  transition: border 0.2s;
+}
+.header nav a.active, .header nav a:hover {
+  border-bottom: 2px solid #00bcd4;
+}
+.main {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 2rem 2.5rem;
+  min-height: 350px;
+}
+.music-list, .project-list {
+  list-style: none;
+  padding: 0;
+}
+.music-list li, .project-list li {
+  margin-bottom: 1.2rem;
+  background: #f0f4f8;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+@media (max-width: 600px) {
+  .main { padding: 1rem; }
+  .header h1 { font-size: 1.5rem; }
+  .header nav a { font-size: 1rem; margin: 0 0.7rem; }
+}
