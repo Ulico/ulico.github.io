@@ -121,7 +121,7 @@ const moreVideos: Video[] = [
   ytVideo(
     'vs_F7XFC8Qw',
     'Afternoon in Paris',
-    'Illinois Arts Council reception · Craig Russo Jazz Quartet',
+    'Jazz Quartet',
   ),
 ]
 
