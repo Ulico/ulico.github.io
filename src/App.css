@@ -252,9 +252,25 @@ main {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1.6fr 1fr;
   gap: 2.5rem;
   align-items: start;
+}
+
+.about-photo {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 720px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-prose {
+  max-width: 42rem;
 }
 
 .about-prose p {
@@ -264,52 +280,6 @@ main {
 
 .about-prose p:last-child {
   margin-bottom: 0;
-}
-
-.about-side {
-  border-left: 1px solid var(--border);
-  padding-left: 1.75rem;
-}
-
-.about-photo {
-  width: 100%;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  margin-bottom: 1.4rem;
-}
-
-.about-facts {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
-
-.fact dt {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.2rem;
-}
-
-.fact dd {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-}
-
-@media (max-width: 720px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-  .about-side {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
-  }
 }
 
 /* ---------- Music ---------- */

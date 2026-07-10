@@ -15,14 +15,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: 'Friends of Frank Lesko',
-    description:
-      'Campaign website for an Illinois State Senate campaign — platform, FAQ, volunteer sign-up, and donations. Hand-built with plain HTML, CSS, and JavaScript.',
-    language: 'JavaScript',
-    languageColor: '#F1E05A',
-    repo: 'https://margaron.net/friendsoffranklesko',
-  },
-  {
     name: 'Porygon3',
     description:
       'Discord bot for the Springfield Battle League, a competitive VGC Pokémon draft league. Handles trades, betting, season scheduling, and Pokémon Showdown replay analysis.',
@@ -41,6 +33,14 @@ const projects: Project[] = [
       href: 'https://ulico-pokemonteamsheetgenerator-app-ukjjki.streamlit.app/',
       label: 'Live app',
     },
+  },
+  {
+    name: 'Friends of Frank Lesko',
+    description:
+      'Campaign website for an Illinois State Senate campaign — platform, FAQ, volunteer sign-up, and donations. Hand-built with plain HTML, CSS, and JavaScript.',
+    language: 'JavaScript',
+    languageColor: '#F1E05A',
+    repo: 'https://margaron.net/friendsoffranklesko',
   },
   {
     name: 'SBL Hub',
@@ -262,7 +262,7 @@ function App() {
             <p className="hero-eyebrow reveal">Musician · Software Engineer</p>
             <h1 className="hero-title reveal">Adrian Russo</h1>
             <p className="hero-sub reveal">
-              I build software — from Discord bots to VR chemistry labs — and play jazz piano and
+              I build software — from websites to Python apps — and play jazz piano and
               bass. Mathematics &amp; CS at the University of Illinois, M.S. in Computer Science.
             </p>
             <div className="hero-actions reveal">
@@ -289,7 +289,8 @@ function App() {
                 &amp; Computer Science and an M.S. in Computer Science from the University of
                 Illinois Urbana-Champaign. I've gamified chemistry labs in virtual reality at
                 Mirage, built mobile health apps for Carle Illinois College of Medicine, and
-                spent two years teaching intro CS as a course associate at UIUC.
+                spent two years teaching intro CS as a course associate at UIUC. These days I'm
+                building the campaign website for Frank Lesko's Illinois State Senate run.
               </p>
               <p>
                 Away from the keyboard I'm a semi-professional musician, and I enjoy playing
@@ -298,27 +299,12 @@ function App() {
                 competitive Rubik's cube organization, with official sub-10-second solves.
               </p>
             </div>
-            <div className="about-side reveal">
-              <img className="about-photo" src={pianoSmile} alt="Adrian at the piano" loading="lazy" />
-              <dl className="about-facts">
-              <div className="fact">
-                <dt>Education</dt>
-                <dd>B.S. Math &amp; CS · M.S. Computer Science, UIUC</dd>
-              </div>
-              <div className="fact">
-                <dt>Currently</dt>
-                <dd>Web developer, Friends of Frank Lesko</dd>
-              </div>
-              <div className="fact">
-                <dt>Toolbox</dt>
-                <dd>Python · Java · Kotlin · TypeScript · Applied ML</dd>
-              </div>
-              <div className="fact">
-                <dt>Elsewhere</dt>
-                <dd>Jazz piano &amp; bass · VGC Pokémon · Tennis &amp; pickleball · Speedcubing</dd>
-              </div>
-              </dl>
-            </div>
+            <img
+              className="about-photo reveal"
+              src={pianoSmile}
+              alt="Adrian at the piano"
+              loading="lazy"
+            />
           </div>
         </section>
 
