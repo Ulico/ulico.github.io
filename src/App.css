@@ -85,11 +85,37 @@ main {
 
 .hero {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
   min-height: calc(100vh - 130px);
   padding: 6rem 0 4rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-photo {
+  width: clamp(220px, 26vw, 320px);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 48px rgba(167, 139, 250, 0.1);
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+  .hero-photo {
+    width: min(280px, 70vw);
+    order: -1;
+  }
 }
 
 .hero-eyebrow {
@@ -238,13 +264,23 @@ main {
   margin-bottom: 0;
 }
 
+.about-side {
+  border-left: 1px solid var(--border);
+  padding-left: 1.75rem;
+}
+
+.about-photo {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin-bottom: 1.4rem;
+}
+
 .about-facts {
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
-  border-left: 1px solid var(--border);
-  padding-left: 1.75rem;
 }
 
 .fact dt {
@@ -266,7 +302,7 @@ main {
   .about-grid {
     grid-template-columns: 1fr;
   }
-  .about-facts {
+  .about-side {
     border-left: none;
     padding-left: 0;
     border-top: 1px solid var(--border);
@@ -275,6 +311,17 @@ main {
 }
 
 /* ---------- Music ---------- */
+
+.music-banner {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin-bottom: 1.1rem;
+  display: block;
+}
 
 .video-row {
   display: grid;
@@ -365,9 +412,17 @@ main {
 }
 
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+/* Whole card clicks through to the repo */
+.repo-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 .project-head {
@@ -411,12 +466,19 @@ main {
 }
 
 .project-link-tag {
+  position: relative;
+  z-index: 1;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent);
   background: var(--accent-dim);
   padding: 0.15rem 0.6rem;
   border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.project-link-tag:hover {
+  background: rgba(167, 139, 250, 0.28);
 }
 
 .project-tag {

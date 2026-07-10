@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 import './App.css'
+import headshot from './assets/headshot.jpg'
+import pianoSmile from './assets/piano-smile.jpg'
+import stagePhoto from './assets/stage.jpg'
 
 type Project = {
   name: string
@@ -182,21 +185,24 @@ function App() {
 
       <main id="top">
         <section className="hero">
-          <p className="hero-eyebrow reveal">Musician · Software Engineer</p>
-          <h1 className="hero-title reveal">Adrian Russo</h1>
-          <p className="hero-sub reveal">
-            I build software — from Discord bots to VR chemistry labs — and play jazz piano and
-            bass. Mathematics &amp; CS at the University of Illinois, M.S. in Computer Science.
-          </p>
-          <div className="hero-actions reveal">
-            <a href="#projects" className="btn btn-primary">
-              View projects
-            </a>
-            <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-              <GitHubIcon />
-              GitHub
-            </a>
+          <div className="hero-text">
+            <p className="hero-eyebrow reveal">Musician · Software Engineer</p>
+            <h1 className="hero-title reveal">Adrian Russo</h1>
+            <p className="hero-sub reveal">
+              I build software — from Discord bots to VR chemistry labs — and play jazz piano and
+              bass. Mathematics &amp; CS at the University of Illinois, M.S. in Computer Science.
+            </p>
+            <div className="hero-actions reveal">
+              <a href="#projects" className="btn btn-primary">
+                View projects
+              </a>
+              <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+                <GitHubIcon />
+                GitHub
+              </a>
+            </div>
           </div>
+          <img className="hero-photo reveal" src={headshot} alt="Adrian Russo" />
         </section>
 
         <section id="about" className="section">
@@ -219,7 +225,9 @@ function App() {
                 organization, with official sub-10-second solves.
               </p>
             </div>
-            <dl className="about-facts reveal">
+            <div className="about-side reveal">
+              <img className="about-photo" src={pianoSmile} alt="Adrian at the piano" />
+              <dl className="about-facts">
               <div className="fact">
                 <dt>Education</dt>
                 <dd>B.S. Math &amp; CS · M.S. Computer Science, UIUC</dd>
@@ -236,7 +244,8 @@ function App() {
                 <dt>Elsewhere</dt>
                 <dd>Jazz piano &amp; bass · VGC Pokémon · Speedcubing</dd>
               </div>
-            </dl>
+              </dl>
+            </div>
           </div>
         </section>
 
@@ -249,6 +258,11 @@ function App() {
             the UIUC Latin Jazz Ensemble, the Craig Russo Latin Jazz Project, Brazil Café, and
             Charanga Tropical. Recordings coming soon.
           </p>
+          <img
+            className="music-banner reveal"
+            src={stagePhoto}
+            alt="Adrian performing at a grand piano"
+          />
           <div className="video-row">
             {videos.map((v) => (
               <figure key={v.src} className="video-card reveal">
@@ -309,15 +323,17 @@ function App() {
           <p className="section-sub reveal">A few things I've built, straight from GitHub.</p>
           <div className="projects-grid">
             {projects.map((p) => (
-              <a
-                key={p.name}
-                href={p.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card project-card reveal"
-              >
+              <div key={p.name} className="card project-card reveal">
                 <div className="project-head">
-                  <h3>{p.name}</h3>
+                  {/* stretched link: covers the whole card via ::after */}
+                  <a
+                    className="repo-link"
+                    href={p.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <h3>{p.name}</h3>
+                  </a>
                   <ArrowIcon />
                 </div>
                 <p>{p.description}</p>
@@ -327,11 +343,18 @@ function App() {
                     {p.language}
                   </span>
                   {p.link && (
-                    <span className="project-link-tag">{p.link.label}</span>
+                    <a
+                      className="project-link-tag"
+                      href={p.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {p.link.label}
+                    </a>
                   )}
                   {p.tag && <span className="project-tag">{p.tag}</span>}
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </section>
