@@ -312,32 +312,90 @@ main {
 
 /* ---------- Music ---------- */
 
-.music-banner {
-  width: 100%;
-  aspect-ratio: 21 / 9;
-  object-fit: cover;
-  object-position: center 30%;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  margin-bottom: 1.1rem;
-  display: block;
-}
-
 .video-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.1rem;
-  margin-bottom: 1.1rem;
 }
 
 .video-card {
   margin: 0;
 }
 
+.video-card.featured {
+  margin-bottom: 1.75rem;
+}
+
 .video-card figcaption {
   margin-top: 0.6rem;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
+}
+
+.video-card figcaption strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.video-card.featured figcaption strong {
+  font-size: 1.08rem;
+}
+
+.video-card figcaption span {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.video-facade {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  cursor: pointer;
+}
+
+.video-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.85;
+  transition: opacity 0.25s, transform 0.35s;
+}
+
+.video-facade:hover img {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(10, 10, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, color 0.2s;
+}
+
+.play-btn svg {
+  margin-left: 3px;
+}
+
+.video-facade:hover .play-btn {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 .video-frame {
@@ -458,6 +516,11 @@ main {
   flex-wrap: wrap;
   font-size: 0.88rem;
   color: var(--text-tertiary);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
 }
 
 .footer a {

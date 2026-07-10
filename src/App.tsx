@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import headshot from './assets/headshot.jpg'
 import pianoSmile from './assets/piano-smile.jpg'
-import stagePhoto from './assets/stage.jpg'
+import reelThumb from './assets/reel-thumb.jpg'
 
 type Project = {
   name: string
@@ -50,6 +50,7 @@ const projects: Project[] = [
     language: 'JavaScript',
     languageColor: '#F1E05A',
     repo: 'https://github.com/patrickrolens/sbl-hub',
+    link: { href: 'https://springfieldbattleleague.com/', label: 'Live site' },
     tag: 'Contributor',
   },
   {
@@ -59,6 +60,7 @@ const projects: Project[] = [
     language: 'JavaScript',
     languageColor: '#F1E05A',
     repo: 'https://github.com/patrickrolens/vgc-draft-planner',
+    link: { href: 'https://planner.springfieldbattleleague.com/', label: 'Live site' },
     tag: 'Contributor',
   },
   {
@@ -94,36 +96,111 @@ const projects: Project[] = [
   },
 ]
 
-const fbEmbedSrc = (href: string) =>
-  `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(href)}&show_text=false`
+type Video = {
+  title: string
+  sub?: string
+  play: string
+  thumb: string
+  thumbFallback?: string
+}
+
+/* Players load on click (facade pattern): faster page load, and we control
+   the preview image — Facebook reels otherwise show a stretched poster. */
+const ytVideo = (id: string, title: string, sub?: string): Video => ({
+  title,
+  sub,
+  play: `https://www.youtube.com/embed/${id}?autoplay=1`,
+  thumb: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
+  thumbFallback: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+})
 
 /* Facebook videos must be public to embed; private ones show "Video Unavailable" */
-const videos: { title: string; src: string }[] = [
-  {
-    title: 'Gershwin — Prelude No. 3 (2018 recital)',
-    src: 'https://www.youtube.com/embed/4WCFLatV5vI',
-  },
-  {
-    title: 'Doña Maria — Brazil Café with Craig Russo & Jose Gobbo',
-    src: 'https://www.youtube.com/embed/EfPUBAQ9nYU',
-  },
-  {
-    title: 'Girl Talk — piano solo',
-    src: 'https://www.youtube.com/embed/ATwcjspRdeE',
-  },
-  {
-    title: 'Live set — Craig Russo Latin Jazz Project',
-    src: fbEmbedSrc('https://www.facebook.com/reel/2216951922410350'),
-  },
-  {
-    title: 'Escapade — with Paul Nolen at Jazz UpFront',
-    src: 'https://www.youtube.com/embed/7twDoLgIpMc',
-  },
+const fbVideo = (href: string, thumb: string, title: string, sub?: string): Video => ({
+  title,
+  sub,
+  play: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(href)}&show_text=false&autoplay=true`,
+  thumb,
+})
+
+const featuredVideo = ytVideo('7twDoLgIpMc', 'Escapade', 'with Paul Nolen at Jazz UpFront')
+
+const moreVideos: Video[] = [
+  ytVideo('4WCFLatV5vI', 'Gershwin — Prelude No. 3', 'Piano · 2018 recital'),
+  ytVideo('EfPUBAQ9nYU', 'Doña Maria', 'Brazil Café · with Craig Russo & Jose Gobbo'),
+  ytVideo('ATwcjspRdeE', 'Girl Talk', 'Piano solo'),
+  fbVideo(
+    'https://www.facebook.com/reel/2216951922410350',
+    reelThumb,
+    'Live set',
+    'Craig Russo Latin Jazz Project',
+  ),
 ]
+
+const PlayIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M8 5.14v13.72c0 .8.87 1.3 1.56.88l10.54-6.86a1.05 1.05 0 0 0 0-1.76L9.56 4.26A1.04 1.04 0 0 0 8 5.14Z" />
+  </svg>
+)
+
+function VideoEmbed({ video, featured = false }: { video: Video; featured?: boolean }) {
+  const [playing, setPlaying] = useState(false)
+  return (
+    <figure className={`video-card reveal${featured ? ' featured' : ''}`}>
+      <div className="video-frame">
+        {playing ? (
+          <iframe
+            src={video.play}
+            title={video.title}
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowFullScreen
+            frameBorder="0"
+          />
+        ) : (
+          <button
+            type="button"
+            className="video-facade"
+            onClick={() => setPlaying(true)}
+            aria-label={`Play ${video.title}`}
+          >
+            <img
+              src={video.thumb}
+              alt=""
+              loading="lazy"
+              onLoad={(e) => {
+                /* YouTube serves a 120x90 gray placeholder when maxresdefault
+                   doesn't exist — swap to hqdefault, which always does */
+                if (
+                  video.thumbFallback &&
+                  e.currentTarget.naturalWidth <= 120 &&
+                  !e.currentTarget.src.endsWith('hqdefault.jpg')
+                ) {
+                  e.currentTarget.src = video.thumbFallback
+                }
+              }}
+            />
+            <span className="play-btn">
+              <PlayIcon />
+            </span>
+          </button>
+        )}
+      </div>
+      <figcaption>
+        <strong>{video.title}</strong>
+        {video.sub && <span>{video.sub}</span>}
+      </figcaption>
+    </figure>
+  )
+}
 
 const ArrowIcon = () => (
   <svg className="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+
+const LinkedInIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
   </svg>
 )
 
@@ -165,6 +242,9 @@ function App() {
           <a href="#projects">Projects</a>
           <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer" className="nav-icon" aria-label="GitHub">
             <GitHubIcon />
+          </a>
+          <a href="https://www.linkedin.com/in/adrianmrusso" target="_blank" rel="noopener noreferrer" className="nav-icon" aria-label="LinkedIn">
+            <LinkedInIcon />
           </a>
         </div>
       </nav>
@@ -244,26 +324,10 @@ function App() {
             the UIUC Latin Jazz Ensemble, the Craig Russo Latin Jazz Project, Brazil Café, and
             Charanga Tropical.
           </p>
-          <img
-            className="music-banner reveal"
-            src={stagePhoto}
-            alt="Adrian performing at a grand piano"
-          />
+          <VideoEmbed video={featuredVideo} featured />
           <div className="video-row">
-            {videos.map((v) => (
-              <figure key={v.src} className="video-card reveal">
-                <div className="video-frame">
-                  <iframe
-                    src={v.src}
-                    title={v.title}
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    allowFullScreen
-                    scrolling="no"
-                    frameBorder="0"
-                  />
-                </div>
-                <figcaption>{v.title}</figcaption>
-              </figure>
+            {moreVideos.map((v) => (
+              <VideoEmbed key={v.title} video={v} />
             ))}
           </div>
         </section>
@@ -314,9 +378,14 @@ function App() {
 
       <footer className="footer">
         <span>© {new Date().getFullYear()} Adrian Russo</span>
-        <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer">
-          github.com/Ulico
-        </a>
+        <div className="footer-links">
+          <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/adrianmrusso" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        </div>
       </footer>
     </div>
   )
