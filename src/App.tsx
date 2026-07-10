@@ -94,10 +94,8 @@ const projects: Project[] = [
 const fbEmbedSrc = (href: string) =>
   `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(href)}&show_text=false`
 
-/* Facebook videos must be public to embed; private ones show "Video Unavailable".
-   `vertical` keeps reels at their native 9:16 inside the 16:9 card so the
-   thumbnail doesn't stretch. */
-const videos: { title: string; src: string; vertical?: boolean }[] = [
+/* Facebook videos must be public to embed; private ones show "Video Unavailable" */
+const videos: { title: string; src: string }[] = [
   {
     title: 'Gershwin — Prelude No. 3 (2018 recital)',
     src: 'https://www.youtube.com/embed/4WCFLatV5vI',
@@ -113,7 +111,6 @@ const videos: { title: string; src: string; vertical?: boolean }[] = [
   {
     title: 'Live set — Craig Russo Latin Jazz Project',
     src: fbEmbedSrc('https://www.facebook.com/reel/2216951922410350'),
-    vertical: true,
   },
   {
     title: 'Live performance',
@@ -255,7 +252,7 @@ function App() {
           <div className="video-row">
             {videos.map((v) => (
               <figure key={v.src} className="video-card reveal">
-                <div className={`video-frame${v.vertical ? ' vertical' : ''}`}>
+                <div className="video-frame">
                   <iframe
                     src={v.src}
                     title={v.title}

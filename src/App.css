@@ -308,17 +308,6 @@ main {
   border: 0;
 }
 
-/* Vertical reels: keep the iframe at 9:16 centered in the 16:9 card */
-.video-frame.vertical {
-  display: flex;
-  justify-content: center;
-}
-
-.video-frame.vertical iframe {
-  width: auto;
-  aspect-ratio: 9 / 16;
-}
-
 .music-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
