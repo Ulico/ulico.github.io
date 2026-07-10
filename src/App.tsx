@@ -133,20 +133,6 @@ const GitHubIcon = () => (
   </svg>
 )
 
-const MusicNoteIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M9 18V5l12-2v13" />
-    <circle cx="6" cy="18" r="3" />
-    <circle cx="18" cy="16" r="3" />
-  </svg>
-)
-
-const WaveIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-    <path d="M3 12h1M7 8v8M11 5v14M15 8v8M19 10v4M22 12h-1" />
-  </svg>
-)
-
 function App() {
   useEffect(() => {
     const els = document.querySelectorAll('.reveal')
@@ -256,7 +242,7 @@ function App() {
           <p className="section-sub reveal">
             Pianist and electric/upright bassist — jazz, classical, and Latin. I've performed with
             the UIUC Latin Jazz Ensemble, the Craig Russo Latin Jazz Project, Brazil Café, and
-            Charanga Tropical. Recordings coming soon.
+            Charanga Tropical.
           </p>
           <img
             className="music-banner reveal"
@@ -279,40 +265,6 @@ function App() {
                 <figcaption>{v.title}</figcaption>
               </figure>
             ))}
-          </div>
-          <div className="music-grid">
-            <a
-              href="https://open.spotify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card music-card reveal"
-            >
-              <span className="music-card-icon spotify">
-                <MusicNoteIcon />
-              </span>
-              <div>
-                <h3>
-                  Spotify <ArrowIcon />
-                </h3>
-                <p>Playlists and released tracks.</p>
-              </div>
-            </a>
-            <a
-              href="https://soundcloud.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card music-card reveal"
-            >
-              <span className="music-card-icon soundcloud">
-                <WaveIcon />
-              </span>
-              <div>
-                <h3>
-                  SoundCloud <ArrowIcon />
-                </h3>
-                <p>Demos, sketches, and works in progress.</p>
-              </div>
-            </a>
           </div>
         </section>
 
