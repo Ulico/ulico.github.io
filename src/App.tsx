@@ -99,7 +99,11 @@ const projects: Project[] = [
 type Video = {
   title: string
   sub?: string
-  play: string
+  /* embed URL to swap in on click… */
+  play?: string
+  /* …or an external page to open (Facebook's plugin ignores autoplay,
+     so reels link out instead of double-clicking through a broken player) */
+  external?: string
   thumb: string
   thumbFallback?: string
 }
@@ -114,19 +118,18 @@ const ytVideo = (id: string, title: string, sub?: string): Video => ({
   thumbFallback: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
 })
 
-/* Facebook videos must be public to embed; private ones show "Video Unavailable" */
 const fbVideo = (href: string, thumb: string, title: string, sub?: string): Video => ({
   title,
   sub,
-  play: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(href)}&show_text=false&autoplay=true`,
+  external: href,
   thumb,
 })
 
 const featuredVideo = ytVideo('7twDoLgIpMc', 'Escapade', 'with Paul Nolen at Jazz UpFront')
 
 const moreVideos: Video[] = [
-  ytVideo('4WCFLatV5vI', 'Gershwin — Prelude No. 3', 'Piano · 2018 recital'),
-  ytVideo('EfPUBAQ9nYU', 'Doña Maria', 'Brazil Café · with Craig Russo & Jose Gobbo'),
+  ytVideo('4WCFLatV5vI', 'Gershwin — Prelude No. 3', '2018 recital'),
+  ytVideo('EfPUBAQ9nYU', 'Doña Maria', 'Brazil Café'),
   ytVideo('ATwcjspRdeE', 'Girl Talk', 'Piano solo'),
   fbVideo(
     'https://www.facebook.com/reel/2216951922410350',
@@ -147,14 +150,27 @@ function VideoEmbed({ video, featured = false }: { video: Video; featured?: bool
   return (
     <figure className={`video-card reveal${featured ? ' featured' : ''}`}>
       <div className="video-frame">
-        {playing ? (
+        {playing && video.play ? (
           <iframe
             src={video.play}
             title={video.title}
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             allowFullScreen
-            frameBorder="0"
           />
+        ) : video.external ? (
+          <a
+            className="video-facade"
+            href={video.external}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Watch ${video.title} on Facebook`}
+          >
+            <img src={video.thumb} alt="" loading="lazy" />
+            <span className="play-btn">
+              <PlayIcon />
+            </span>
+            <span className="facade-badge">Watch on Facebook</span>
+          </a>
         ) : (
           <button
             type="button"
