@@ -13,6 +13,7 @@ type Project = {
   tag?: string
 }
 
+/* First three render as full cards; the rest render as a compact list */
 const projects: Project[] = [
   {
     name: 'Porygon3',
@@ -119,9 +120,9 @@ const moreVideos: Video[] = [
   ytVideo('EfPUBAQ9nYU', 'Doña Maria', 'Brazil Café'),
   ytVideo('ATwcjspRdeE', 'Girl Talk', 'Jazz Trio'),
   ytVideo(
-    'vs_F7XFC8Qw',
-    'Afternoon in Paris',
-    'Jazz Quartet',
+    'vZPGl5RaW1E',
+    "Feel Like Makin' Love",
+    'Jason Brewer & the B.A.M. Collective',
   ),
 ]
 
@@ -331,7 +332,7 @@ function App() {
           </h2>
           <p className="section-sub reveal">A few things I've built, straight from GitHub.</p>
           <div className="projects-grid">
-            {projects.map((p) => (
+            {projects.slice(0, 3).map((p) => (
               <div key={p.name} className="card project-card reveal">
                 <div className="project-head">
                   {/* stretched link: covers the whole card via ::after */}
@@ -362,6 +363,33 @@ function App() {
                     </a>
                   )}
                   {p.tag && <span className="project-tag">{p.tag}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="projects-more-title reveal">More projects</h3>
+          <div className="projects-more reveal">
+            {projects.slice(3).map((p) => (
+              <div key={p.name} className="projects-more-row">
+                <a className="repo-link" href={p.repo} target="_blank" rel="noopener noreferrer">
+                  <span className="lang-dot" style={{ background: p.languageColor }} />
+                  {p.name}
+                </a>
+                <div className="projects-more-meta">
+                  {p.link && (
+                    <a
+                      className="project-link-tag"
+                      href={p.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {p.link.label}
+                    </a>
+                  )}
+                  {p.tag && <span className="project-tag">{p.tag}</span>}
+                  <span className="lang">{p.language}</span>
+                  <ArrowIcon />
                 </div>
               </div>
             ))}
