@@ -132,7 +132,7 @@ const moreVideos: Video[] = [
     'https://www.facebook.com/reel/2216951922410350',
     reelThumb,
     'Live set',
-    'Craig Russo Latin Jazz Project',
+    'Illinois Arts Council reception · with the Craig Russo quartet',
   ),
 ]
 

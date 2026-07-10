@@ -478,6 +478,7 @@ main {
 .project-link-tag {
   position: relative;
   z-index: 1;
+  white-space: nowrap;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent);
@@ -492,6 +493,7 @@ main {
 }
 
 .project-tag {
+  white-space: nowrap;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-secondary);
