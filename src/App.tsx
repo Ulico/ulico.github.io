@@ -292,10 +292,10 @@ function App() {
                 spent two years teaching intro CS as a course associate at UIUC.
               </p>
               <p>
-                Away from the keyboard I'm a semi-professional musician, a competitive VGC
-                Pokémon player (most of my side projects orbit a draft league), and a
-                speedcuber — I was president of Illini Cubers, UIUC's competitive Rubik's cube
-                organization, with official sub-10-second solves.
+                Away from the keyboard I'm a semi-professional musician, and I enjoy playing
+                VGC Pokémon (most of my side projects orbit a draft league), tennis and
+                pickleball, and speedcubing — I was president of Illini Cubers, UIUC's
+                competitive Rubik's cube organization, with official sub-10-second solves.
               </p>
             </div>
             <div className="about-side reveal">
@@ -315,7 +315,7 @@ function App() {
               </div>
               <div className="fact">
                 <dt>Elsewhere</dt>
-                <dd>Jazz piano &amp; bass · VGC Pokémon · Speedcubing</dd>
+                <dd>Jazz piano &amp; bass · VGC Pokémon · Tennis &amp; pickleball · Speedcubing</dd>
               </div>
               </dl>
             </div>
