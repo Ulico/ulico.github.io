@@ -107,7 +107,7 @@ type Video = {
 const ytVideo = (id: string, title: string, sub?: string): Video => ({
   title,
   sub,
-  play: `https://www.youtube.com/embed/${id}?autoplay=1`,
+  play: `https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1`,
   thumb: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
   thumbFallback: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
 })
@@ -280,7 +280,7 @@ function App() {
               </p>
             </div>
             <div className="about-side reveal">
-              <img className="about-photo" src={pianoSmile} alt="Adrian at the piano" />
+              <img className="about-photo" src={pianoSmile} alt="Adrian at the piano" loading="lazy" />
               <dl className="about-facts">
               <div className="fact">
                 <dt>Education</dt>
