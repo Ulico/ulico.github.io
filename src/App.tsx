@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import headshot from './assets/headshot.jpg'
 import pianoSmile from './assets/piano-smile.jpg'
-import reelThumb from './assets/reel-thumb.jpg'
 
 type Project = {
   name: string
@@ -99,17 +98,12 @@ const projects: Project[] = [
 type Video = {
   title: string
   sub?: string
-  /* embed URL to swap in on click… */
-  play?: string
-  /* …or an external page to open (Facebook's plugin ignores autoplay,
-     so reels link out instead of double-clicking through a broken player) */
-  external?: string
+  play: string
   thumb: string
   thumbFallback?: string
 }
 
-/* Players load on click (facade pattern): faster page load, and we control
-   the preview image — Facebook reels otherwise show a stretched poster. */
+/* Players load on click (facade pattern): faster page load than eager iframes */
 const ytVideo = (id: string, title: string, sub?: string): Video => ({
   title,
   sub,
@@ -118,24 +112,16 @@ const ytVideo = (id: string, title: string, sub?: string): Video => ({
   thumbFallback: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
 })
 
-const fbVideo = (href: string, thumb: string, title: string, sub?: string): Video => ({
-  title,
-  sub,
-  external: href,
-  thumb,
-})
-
 const featuredVideo = ytVideo('7twDoLgIpMc', 'Escapade', 'with Paul Nolen at Jazz UpFront')
 
 const moreVideos: Video[] = [
   ytVideo('4WCFLatV5vI', 'Gershwin — Prelude No. 3', '2018 recital'),
   ytVideo('EfPUBAQ9nYU', 'Doña Maria', 'Brazil Café'),
-  ytVideo('ATwcjspRdeE', 'Girl Talk', 'Piano solo'),
-  fbVideo(
-    'https://www.facebook.com/reel/2216951922410350',
-    reelThumb,
-    'Live set',
-    'Illinois Arts Council reception · with the Craig Russo quartet',
+  ytVideo('ATwcjspRdeE', 'Girl Talk', 'Jazz Trio'),
+  ytVideo(
+    'vs_F7XFC8Qw',
+    'Afternoon in Paris',
+    'Illinois Arts Council reception · Craig Russo Jazz Quartet',
   ),
 ]
 
@@ -150,27 +136,13 @@ function VideoEmbed({ video, featured = false }: { video: Video; featured?: bool
   return (
     <figure className={`video-card reveal${featured ? ' featured' : ''}`}>
       <div className="video-frame">
-        {playing && video.play ? (
+        {playing ? (
           <iframe
             src={video.play}
             title={video.title}
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             allowFullScreen
           />
-        ) : video.external ? (
-          <a
-            className="video-facade"
-            href={video.external}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Watch ${video.title} on Facebook`}
-          >
-            <img src={video.thumb} alt="" loading="lazy" />
-            <span className="play-btn">
-              <PlayIcon />
-            </span>
-            <span className="facade-badge">Watch on Facebook</span>
-          </a>
         ) : (
           <button
             type="button"
