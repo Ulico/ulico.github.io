@@ -186,6 +186,19 @@ const ArrowIcon = () => (
   </svg>
 )
 
+const FacebookIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12H10V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.03h-1.04c-1.03 0-1.35.64-1.35 1.29V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8Z" />
+  </svg>
+)
+
+const MailIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="m3 7 9 6 9-6" />
+  </svg>
+)
+
 const LinkedInIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
@@ -233,6 +246,12 @@ function App() {
           </a>
           <a href="https://www.linkedin.com/in/adrianmrusso" target="_blank" rel="noopener noreferrer" className="nav-icon" aria-label="LinkedIn">
             <LinkedInIcon />
+          </a>
+          <a href="https://www.facebook.com/adrian.russo.9041" target="_blank" rel="noopener noreferrer" className="nav-icon" aria-label="Facebook">
+            <FacebookIcon />
+          </a>
+          <a href="mailto:adrianmarcusr@gmail.com" className="nav-icon" aria-label="Email">
+            <MailIcon />
           </a>
         </div>
       </nav>
@@ -373,6 +392,10 @@ function App() {
           <a href="https://www.linkedin.com/in/adrianmrusso" target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
+          <a href="https://www.facebook.com/adrian.russo.9041" target="_blank" rel="noopener noreferrer">
+            Facebook
+          </a>
+          <a href="mailto:adrianmarcusr@gmail.com">Email</a>
         </div>
       </footer>
     </div>
