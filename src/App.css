@@ -398,7 +398,6 @@ main {
 .play-btn svg {
   width: 42%;
   height: 42%;
-  margin-left: 6%;
 }
 
 .video-facade:hover .play-btn {
