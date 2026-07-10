@@ -113,8 +113,8 @@ const videos: { title: string; src: string }[] = [
     src: fbEmbedSrc('https://www.facebook.com/reel/2216951922410350'),
   },
   {
-    title: 'Live performance',
-    src: fbEmbedSrc('https://www.facebook.com/100002433142834/videos/1778247609816831/'),
+    title: 'Escapade — with Paul Nolen at Jazz UpFront',
+    src: 'https://www.youtube.com/embed/7twDoLgIpMc',
   },
 ]
 
