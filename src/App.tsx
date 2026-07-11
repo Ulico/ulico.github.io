@@ -26,7 +26,7 @@ const projects: Project[] = [
   {
     name: 'Pokémon Teamsheet Generator',
     description:
-      'Generates polished, Scarlet/Violet-styled teamsheet graphics for Pokémon teams — dynamic layouts, type and move icons, and stylized text.',
+      'Generates polished, Champions or Scarlet/Violet-styled teamsheet graphics for Pokémon teams — dynamic layouts, type and move icons, and stylized text.',
     language: 'Python',
     languageColor: '#3572A5',
     repo: 'https://github.com/Ulico/PokemonTeamsheetGenerator',
@@ -113,12 +113,12 @@ const ytVideo = (id: string, title: string, sub?: string): Video => ({
   thumbFallback: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
 })
 
-const featuredVideo = ytVideo('7twDoLgIpMc', 'Escapade', 'with Paul Nolen at Jazz UpFront')
+const featuredVideo = ytVideo('7twDoLgIpMc', 'Escapade', 'Paul Nolen Quartet at Jazz UpFront')
 
 const moreVideos: Video[] = [
-  ytVideo('4WCFLatV5vI', 'Gershwin — Prelude No. 3', '2018 recital'),
+  ytVideo('4WCFLatV5vI', 'Prelude No. 3 (Gershwin)', '2018 Recital'),
   ytVideo('EfPUBAQ9nYU', 'Doña Maria', 'Brazil Café'),
-  ytVideo('ATwcjspRdeE', 'Girl Talk', 'Jazz Trio'),
+  ytVideo('ATwcjspRdeE', 'Girl Talk', 'Russo Jazz Trio'),
   ytVideo(
     'vZPGl5RaW1E',
     "Feel Like Makin' Love",
@@ -242,18 +242,7 @@ function App() {
           <a href="#about">About</a>
           <a href="#music">Music</a>
           <a href="#projects">Projects</a>
-          <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer" className="nav-icon" aria-label="GitHub">
-            <GitHubIcon />
-          </a>
-          <a href="https://www.linkedin.com/in/adrianmrusso" target="_blank" rel="noopener noreferrer" className="nav-icon" aria-label="LinkedIn">
-            <LinkedInIcon />
-          </a>
-          <a href="https://www.facebook.com/adrian.russo.9041" target="_blank" rel="noopener noreferrer" className="nav-icon" aria-label="Facebook">
-            <FacebookIcon />
-          </a>
-          <a href="mailto:adrianmarcusr@gmail.com" className="nav-icon" aria-label="Email">
-            <MailIcon />
-          </a>
+          <a href="#contact">Contact</a>
         </div>
       </nav>
 
@@ -270,10 +259,6 @@ function App() {
               <a href="#projects" className="btn btn-primary">
                 View projects
               </a>
-              <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-                <GitHubIcon />
-                GitHub
-              </a>
             </div>
           </div>
           <img className="hero-photo reveal" src={headshot} alt="Adrian Russo" />
@@ -288,16 +273,14 @@ function App() {
               <p>
                 I'm a software engineer out of Springfield, Illinois, with degrees in Mathematics
                 &amp; Computer Science and an M.S. in Computer Science from the University of
-                Illinois Urbana-Champaign. I've gamified chemistry labs in virtual reality at
-                Mirage, built mobile health apps for Carle Illinois College of Medicine, and
-                spent two years teaching intro CS as a course associate at UIUC. These days I'm
-                building the campaign website for Frank Lesko's Illinois State Senate run.
+                Illinois Urbana-Champaign. I spent two years teaching intro CS as a course
+                associate at UIUC, built mobile health apps for Carle Illinois College of
+                Medicine, and helped build the campaign website for Frank Lesko's
+                Illinois State Senate run.
               </p>
               <p>
-                Away from the keyboard I'm a semi-professional musician, and I enjoy playing
-                VGC Pokémon (most of my side projects orbit a draft league), tennis and
-                pickleball, and speedcubing — I was president of Illini Cubers, UIUC's
-                competitive Rubik's cube organization, with official sub-10-second solves.
+                Outside of software, I'm a semi-professional musician who also competes in VGC
+                Pokémon, plays tennis and pickleball, and speedcubes.
               </p>
             </div>
             <img
@@ -395,22 +378,55 @@ function App() {
             ))}
           </div>
         </section>
+
+        <section id="contact" className="section">
+          <h2 className="section-title reveal">
+            <span className="section-index">04</span> Contact
+          </h2>
+          <p className="section-sub reveal">
+            Have a project, a gig, or just want to say hi? I'd love to hear from you.
+          </p>
+          <div className="contact-card reveal">
+            <a href="mailto:adrianmarcusr@gmail.com" className="btn btn-primary contact-email">
+              <MailIcon />
+              adrianmarcusr@gmail.com
+            </a>
+            <div className="contact-socials">
+              <a
+                href="https://www.linkedin.com/in/adrianmrusso"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost"
+              >
+                <LinkedInIcon />
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/Ulico"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost"
+              >
+                <GitHubIcon />
+                GitHub
+              </a>
+              <a
+                href="https://www.facebook.com/adrian.russo.9041"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost"
+              >
+                <FacebookIcon />
+                Facebook
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
         <span>© {new Date().getFullYear()} Adrian Russo</span>
-        <div className="footer-links">
-          <a href="https://github.com/Ulico" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/adrianmrusso" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <a href="https://www.facebook.com/adrian.russo.9041" target="_blank" rel="noopener noreferrer">
-            Facebook
-          </a>
-          <a href="mailto:adrianmarcusr@gmail.com">Email</a>
-        </div>
+        <a href="#contact">Get in touch</a>
       </footer>
     </div>
   )

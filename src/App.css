@@ -69,17 +69,7 @@
   color: var(--text);
 }
 
-.nav-icon {
-  display: inline-flex;
-  align-items: center;
-}
-
 @media (max-width: 640px) {
-  /* social icons are duplicated in the footer; drop them here so the
-     section links don't overflow the viewport */
-  .nav-icon {
-    display: none;
-  }
   .nav-links {
     gap: 1.1rem;
   }
@@ -568,6 +558,41 @@ main {
   }
 }
 
+/* ---------- Contact ---------- */
+
+.contact-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 2rem 2.25rem;
+}
+
+.contact-email {
+  font-size: 1.05rem;
+}
+
+.contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 560px) {
+  .contact-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contact-email,
+  .contact-socials .btn {
+    justify-content: center;
+  }
+}
+
 /* ---------- Footer ---------- */
 
 .footer {
@@ -584,11 +609,6 @@ main {
   flex-wrap: wrap;
   font-size: 0.88rem;
   color: var(--text-tertiary);
-}
-
-.footer-links {
-  display: flex;
-  gap: 1.25rem;
 }
 
 .footer a {
