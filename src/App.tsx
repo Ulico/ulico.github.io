@@ -247,60 +247,50 @@ function App() {
       </nav>
 
       <main id="top">
-        <section className="hero">
-          <div className="hero-text">
-            <p className="hero-eyebrow reveal">Musician · Software Engineer</p>
-            <h1 className="hero-title reveal">Adrian Russo</h1>
-            <p className="hero-sub reveal">
-              I build software — from websites to Python apps — and play jazz piano and
-              bass. Mathematics &amp; CS at the University of Illinois, M.S. in Computer Science.
-            </p>
-            <div className="hero-actions reveal">
-              <a href="#projects" className="btn btn-primary">
-                View projects
-              </a>
+        <section id="about" className="hero-about">
+          <div className="hero-row">
+            <div className="hero-text">
+              <p className="hero-eyebrow reveal">Software Engineer · Musician</p>
+              <h1 className="hero-title reveal">Adrian Russo</h1>
+              <div className="about-prose reveal">
+                <p>
+                  I'm a software engineer out of Springfield, Illinois, with degrees in
+                  Mathematics &amp; Computer Science and an M.S. in Computer Science from the
+                  University of Illinois Urbana-Champaign. I spent two years teaching intro CS as
+                  a course associate at UIUC, built mobile health apps for Carle Illinois College
+                  of Medicine, and helped build the campaign website for Frank Lesko's Illinois
+                  State Senate run.
+                </p>
+                <p>
+                  Outside of software, I'm a semi-professional musician who also competes in VGC
+                  Pokémon, plays tennis and pickleball, and speedcubes.
+                </p>
+              </div>
             </div>
-          </div>
-          <img className="hero-photo reveal" src={headshot} alt="Adrian Russo" />
-        </section>
-
-        <section id="about" className="section">
-          <h2 className="section-title reveal">
-            <span className="section-index">01</span> About
-          </h2>
-          <div className="about-grid">
-            <div className="about-prose reveal">
-              <p>
-                I'm a software engineer out of Springfield, Illinois, with degrees in Mathematics
-                &amp; Computer Science and an M.S. in Computer Science from the University of
-                Illinois Urbana-Champaign. I spent two years teaching intro CS as a course
-                associate at UIUC, built mobile health apps for Carle Illinois College of
-                Medicine, and helped build the campaign website for Frank Lesko's
-                Illinois State Senate run.
-              </p>
-              <p>
-                Outside of software, I'm a semi-professional musician who also competes in VGC
-                Pokémon, plays tennis and pickleball, and speedcubes.
-              </p>
-            </div>
-            <img
-              className="about-photo reveal"
-              src={pianoSmile}
-              alt="Adrian at the piano"
-              loading="lazy"
-            />
+            <img className="hero-photo reveal" src={headshot} alt="Adrian Russo" />
           </div>
         </section>
 
         <section id="music" className="section">
           <h2 className="section-title reveal">
-            <span className="section-index">02</span> Music
+            <span className="section-index">01</span> Music
           </h2>
-          <p className="section-sub reveal">
-            Pianist and electric/upright bassist — jazz, classical, and Latin. I've performed with
-            the UIUC Latin Jazz Ensemble, the Craig Russo Latin Jazz Project, Brazil Café, and
-            Charanga Tropical.
-          </p>
+          <div className="music-intro">
+            <p className="section-sub reveal">
+              Pianist and electric/upright bassist in many genres, including jazz, classical,
+              Latin, vocal and theater music. I've performed with the UIUC Latin Jazz Ensemble,
+              the Craig Russo Latin Jazz Project, Brazil Café, Charanga Tropical, and played in
+              the pit orchestra for multiple musical theatre productions. I'm a recipient of the
+              Illinois Federation of Music Clubs Hall of Fame Award and placed 2nd in the IFMC
+              State Piano Concerto Competition in both 2019 and 2020.
+            </p>
+            <img
+              className="music-photo reveal"
+              src={pianoSmile}
+              alt="Adrian at the piano"
+              loading="lazy"
+            />
+          </div>
           <VideoEmbed video={featuredVideo} featured />
           <div className="video-row">
             {moreVideos.map((v) => (
@@ -311,7 +301,7 @@ function App() {
 
         <section id="projects" className="section">
           <h2 className="section-title reveal">
-            <span className="section-index">03</span> Projects
+            <span className="section-index">02</span> Projects
           </h2>
           <p className="section-sub reveal">A few things I've built, straight from GitHub.</p>
           <div className="projects-grid">
@@ -381,7 +371,7 @@ function App() {
 
         <section id="contact" className="section">
           <h2 className="section-title reveal">
-            <span className="section-index">04</span> Contact
+            <span className="section-index">03</span> Contact
           </h2>
           <p className="section-sub reveal">
             Have a project, a gig, or just want to say hi? I'd love to hear from you.
@@ -426,7 +416,6 @@ function App() {
 
       <footer className="footer">
         <span>© {new Date().getFullYear()} Adrian Russo</span>
-        <a href="#contact">Get in touch</a>
       </footer>
     </div>
   )

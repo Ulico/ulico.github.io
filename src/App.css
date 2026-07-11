@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem 1rem;
-  padding: 1rem clamp(1.5rem, 5vw, 4rem);
+  padding: 1rem clamp(1.5rem, 5vw, 4rem) 1rem clamp(1rem, 3vw, 2.5rem);
   background: rgba(10, 10, 12, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -98,15 +98,19 @@ main {
   padding: 0 clamp(1.5rem, 5vw, 4rem);
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero + About (combined intro section) ---------- */
 
-.hero {
+.hero-about {
+  padding: 6rem 0 5.5rem;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 4rem;
+}
+
+.hero-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 3rem;
-  min-height: calc(100vh - 130px);
-  padding: 6rem 0 4rem;
 }
 
 .hero-text {
@@ -124,7 +128,7 @@ main {
 }
 
 @media (max-width: 860px) {
-  .hero {
+  .hero-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 2.5rem;
@@ -155,19 +159,6 @@ main {
   -webkit-text-fill-color: transparent;
   color: transparent;
   margin-bottom: 1.5rem;
-}
-
-.hero-sub {
-  max-width: 34rem;
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 0.9rem;
-  flex-wrap: wrap;
 }
 
 .btn {
@@ -265,27 +256,6 @@ main {
   transform: translate(2px, -2px);
 }
 
-/* ---------- About ---------- */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-
-.about-photo {
-  width: 100%;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-}
-
-@media (max-width: 720px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .about-prose {
   max-width: 42rem;
 }
@@ -299,7 +269,29 @@ main {
   margin-bottom: 0;
 }
 
-/* ---------- Music ---------- */
+.music-intro {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-bottom: 2.5rem;
+}
+
+.music-intro .section-sub {
+  margin-bottom: 0;
+}
+
+.music-photo {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 720px) {
+  .music-intro {
+    grid-template-columns: 1fr;
+  }
+}
 
 .video-row {
   display: grid;
